@@ -1,16 +1,16 @@
 package com.example.oa.adminpage.presenter.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 
 import com.example.oa.adminpage.R;
 import com.example.oa.adminpage.presenter.adapter.CustomPagerAdapter;
-import com.example.oa.adminpage.presenter.fragment.CategoryFragment;
 import com.example.oa.adminpage.presenter.fragment.CheckListFragment;
 
 import java.util.ArrayList;
@@ -71,7 +71,14 @@ public class MainManagerActivity extends BaseActivity {
         Fragment f2 = Fragment.instantiate(this,CheckListFragment.class.getName(),b2);
 
         List<Fragment> fragments = new ArrayList(Arrays.asList(f1,f2));
+        List<String> titles = new ArrayList(Arrays.asList("Xem theo ban"," Xem theo don hang"));
         pagerAdapter.setFragments(fragments);
+        pagerAdapter.setTitles(titles);
 
+    }
+
+    public static void start(Context context) {
+        Intent intent=new Intent(context,MainManagerActivity.class);
+        context.startActivity(intent);
     }
 }

@@ -2,5 +2,7 @@
 <resources>
     <string name="app_name">Đặt món mobile</string>
     <string name="wc_search_txt" translatable="false">Bạn định đi đâu</string>
-    <string name="app_menu_title">Menu</string>
+    <string name="app_menu_title">Thực đơn</string>
+    <string name="forget_psw">Quên mật khẩu</string>
+    <string name="bill_paid">Hoá đơn đã được thanh toán </string>
 </resources>

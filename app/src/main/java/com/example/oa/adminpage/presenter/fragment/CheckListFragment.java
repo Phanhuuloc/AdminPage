@@ -64,6 +64,12 @@ public class CheckListFragment extends BaseFragment {
         recyclerView.setLayoutManager(mLayoutManager);
         adapter = new CustomListAdapter(getActivity(), type);
         recyclerView.setAdapter(adapter);
+
+        initFakeData();
+    }
+
+    private void initFakeData() {
+
     }
 
     private void initData() {

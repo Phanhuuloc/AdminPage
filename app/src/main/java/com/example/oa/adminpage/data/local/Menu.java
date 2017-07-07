@@ -21,17 +21,17 @@ import io.realm.annotations.Ignore;
         analyze = {Menu.class})
 public class Menu extends RealmObject implements ODObject {
     @Ignore
-    private UUID uuid;
+    private String uuid;
     private String name;
     private String price;
     private String description;
     private String note;
 
-    public UUID getUuid() {
+    public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(UUID uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 

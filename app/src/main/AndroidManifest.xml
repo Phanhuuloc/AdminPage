@@ -42,27 +42,38 @@
             android:name=".presenter.activity.SignInActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
 
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".presenter.activity.OrderActivity"
             android:label="@string/title_activity_oder"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".presenter.activity.MainManagerActivity"
+            android:label="@string/view_bill"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
 
         <activity
-            android:name=".presenter.activity.MainManagerActivity"
+            android:name=".presenter.activity.BillDetailActivity"
+            android:label="@string/view_bill"
+            android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".presenter.activity.LoginActivity"
+            android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

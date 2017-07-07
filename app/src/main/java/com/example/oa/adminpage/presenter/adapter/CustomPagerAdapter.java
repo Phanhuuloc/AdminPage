@@ -18,6 +18,7 @@ import java.util.List;
 public class CustomPagerAdapter extends FragmentStatePagerAdapter {
 
     List<Fragment> fragments = new ArrayList<>();
+    List<String> titles = new ArrayList<>();
     private Context context;
 
     public CustomPagerAdapter(Context context, FragmentManager fm) {
@@ -33,6 +34,10 @@ public class CustomPagerAdapter extends FragmentStatePagerAdapter {
         this.fragments = fragments;
     }
 
+    public void setTitles(List<String> titles) {
+        this.titles = titles;
+    }
+
     @Override
     public Fragment getItem(int position) {
         return fragments.get(position);
@@ -45,11 +50,12 @@ public class CustomPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position){
-            case 0: return  context.getString(R.string.menu_all);
-            case 1: return  context.getString(R.string.menu_near_me);
-            case 2: return  context.getString(R.string.menu_favorite);
-            default: return "";
-        }
+        return titles.get(position);
+//        switch (position){
+//            case 0: return  context.getString(R.string.menu_all);
+//            case 1: return  context.getString(R.string.menu_near_me);
+//            case 2: return  context.getString(R.string.menu_favorite);
+//            default: return "";
+//        }
     }
 }
