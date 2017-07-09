@@ -5,4 +5,17 @@
     <string name="app_menu_title">Thực đơn</string>
     <string name="forget_psw">Quên mật khẩu</string>
     <string name="bill_paid">Hoá đơn đã được thanh toán </string>
+    <string name="invoice">Đơn Hành</string>
+    <string name="product">Sản phẩm </string>
+    <string name="tracking">Theo dõi</string>
+    <string name="tools">Công cụ</string>
+    <string name="setting">Cài đặt</string>
+    <string name="action_register">Đăng ký</string>
+    <string name="action_settings">Cài đặt</string>
+    <string name="action_sign_in">Đăng nhập</string>
+    <string name="action_sign_in_short">Đăng nhập</string>
+    <string name="disconnect">Ngắt kết nối</string>
+    <string name="loading">Đang tải...</string>
+    <string name="menu_favorite">Yếu thích</string>
+    <string name="menu_near_me">Gần đây</string>
 </resources>
