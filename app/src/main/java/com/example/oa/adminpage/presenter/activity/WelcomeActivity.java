@@ -17,7 +17,6 @@ import butterknife.OnClick;
 
 public class WelcomeActivity extends BaseActivity {
 
-
     @BindView(R.id.wcLogo)
     ImageView wcLogo;
     @BindView(R.id.wcSearchview)

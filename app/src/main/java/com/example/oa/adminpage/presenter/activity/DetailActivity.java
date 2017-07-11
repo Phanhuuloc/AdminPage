@@ -3,31 +3,32 @@ package com.example.oa.adminpage.presenter.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
 import com.example.oa.adminpage.R;
+import com.example.oa.adminpage.presenter.fragment.ListBillFragment;
+import com.example.oa.adminpage.presenter.fragment.ListCategoryFragment;
+import com.example.oa.adminpage.presenter.fragment.RecyclerViewBaseFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+
+import static com.example.oa.adminpage.presenter.fragment.RecyclerViewBaseFragment.KEY_LAYOUT_MANAGER;
+import static com.example.oa.adminpage.presenter.fragment.RecyclerViewBaseFragment.TYPE_HORIZONTAL_LIST;
+import static com.example.oa.adminpage.presenter.fragment.RecyclerViewBaseFragment.TYPE_VERTICAL_LIST;
 
 public class DetailActivity extends BaseActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.textView)
-    TextView textView;
-    @BindView(R.id.btn_navigate)
-    Button btnNavigate;
-    @BindView(R.id.btn_pre_order)
-    Button btnPreOrder;
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
+
+    @BindView(R.id.sample_content_fragment)
+    FrameLayout sampleContentFragment;
+    @BindView(R.id.category_content_fragment)
+    FrameLayout categoryContentFragment;
+    @BindView(R.id.sample_main_layout)
+    RelativeLayout sampleMainLayout;
 
     public static void start(Context context) {
         Intent i = new Intent(context, DetailActivity.class);
@@ -43,17 +44,21 @@ public class DetailActivity extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        if (savedInstanceState == null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+            RecyclerViewBaseFragment fragment1 = new ListBillFragment();
+            transaction.replace(R.id.sample_content_fragment, fragment1);
+
+            RecyclerViewBaseFragment fragment2 = new ListCategoryFragment();
+            transaction.replace(R.id.category_content_fragment, fragment2);
+
+            transaction.commit();
+        }
+        initialize();
     }
 
+    private void initialize() {
 
-    @OnClick({R.id.btn_navigate, R.id.btn_pre_order})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_navigate:
-                break;
-            case R.id.btn_pre_order:
-                OrderActivity.start(this);
-                break;
-        }
     }
 }

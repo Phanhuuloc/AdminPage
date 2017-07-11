@@ -58,6 +58,7 @@
         <activity
             android:name=".presenter.activity.MainManagerActivity"
             android:label="@string/view_bill"
+            android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
@@ -70,7 +71,7 @@
         </activity>
         <activity
             android:name=".presenter.activity.LoginActivity"
-            android:label="@string/title_activity_login">
+            android:label="@string/admin_page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

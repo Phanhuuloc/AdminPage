@@ -18,4 +18,5 @@
     <string name="loading">Đang tải...</string>
     <string name="menu_favorite">Yếu thích</string>
     <string name="menu_near_me">Gần đây</string>
+    <string name="admin_page">Admin Page</string>
 </resources>

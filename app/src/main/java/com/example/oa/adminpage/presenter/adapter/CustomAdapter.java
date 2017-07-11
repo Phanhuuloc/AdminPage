@@ -23,73 +23,128 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.oa.adminpage.R;
+import com.example.oa.adminpage.data.local.Bill;
+import com.example.oa.adminpage.data.local.Category;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import io.realm.RealmObject;
 
 /**
- * Provide views to RecyclerView with data from mDataSet.
+ * Provide views to RecyclerView with data from items.
  */
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
     private static final String TAG = "CustomAdapter";
+    public static final int TYPE_LIST_BILL = 0;
+    public static final int TYPE_LIST_CATEGORY = 1;
 
-    private String[] mDataSet;
+    private List<T> items = new ArrayList<>();
+    private int type;
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public void setItems(List<T> items) {
+        this.items = items;
+        notifyDataSetChanged();
+    }
+
+    // Create new views (invoked by the layout manager)
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        // Create a new view.
+        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
+
+        if (TYPE_LIST_BILL == type) {
+            View v = inflater.inflate(R.layout.menu_item, viewGroup, false);
+            return new MenuViewHolder(v);
+        } else if (TYPE_LIST_CATEGORY == type) {
+            View v = inflater.inflate(R.layout.category_item, viewGroup, false);
+            return new CategoryViewHolder(v);
+        }else {
+            return null;
+        }
+    }
+
+    // Replace the contents of a view (invoked by the layout manager)
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+        Log.d(TAG, "Element " + position + " set.");
+
+        if (holder instanceof MenuViewHolder) {
+            MenuViewHolder viewHolder = (MenuViewHolder) holder;
+            Bill data = (Bill) items.get(position);
+            viewHolder.itemName.setText(data.getCode());
+            viewHolder.itemPrice.setText(data.getCode());
+        } else if (TYPE_LIST_CATEGORY == type) {
+            CategoryViewHolder viewHolder = (CategoryViewHolder) holder;
+            Category data = (Category) items.get(position);
+            viewHolder.itemName.setText(data.getName());
+        }
+
+    }
+
+    // Return the size of your dataset (invoked by the layout manager)
+    @Override
+    public int getItemCount() {
+        return items.size();
+    }
 
     /**
-     * Provide a reference to the type of views that you are using (custom ViewHolder)
+     * Provide a reference to the type of views that you are using (custom MenuViewHolder)
      */
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textView;
+    public static class MenuViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.item_img)
+        ImageView itemImg;
+        @BindView(R.id.item_name)
+        TextView itemName;
+        @BindView(R.id.item_price)
+        TextView itemPrice;
 
-        public ViewHolder(View v) {
+        public MenuViewHolder(View v) {
             super(v);
-            // Define click listener for the ViewHolder's View.
+            ButterKnife.bind(this, v);
+
+            // Define click listener for the MenuViewHolder's View.
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
                 }
             });
-            textView = (TextView) v.findViewById(R.id.textView);
-        }
-
-        public TextView getTextView() {
-            return textView;
         }
     }
 
     /**
-     * Initialize the dataset of the Adapter.
-     *
-     * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
+     * Provide a reference to the type of views that you are using (custom MenuViewHolder)
      */
-    public CustomAdapter(String[] dataSet) {
-        mDataSet = dataSet;
-    }
+    public static class CategoryViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.item_img)
+        ImageView itemImg;
+        @BindView(R.id.item_name)
+        TextView itemName;
+//        @BindView(R.id.item_price)
+//        TextView itemPrice;
 
-    // Create new views (invoked by the layout manager)
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        // Create a new view.
-        View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.product_item, viewGroup, false);
+        public CategoryViewHolder(View v) {
+            super(v);
+            ButterKnife.bind(this, v);
 
-        return new ViewHolder(v);
-    }
-
-    // Replace the contents of a view (invoked by the layout manager)
-    @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        Log.d(TAG, "Element " + position + " set.");
-
-        // Get element from your dataset at this position and replace the contents of the view
-        // with that element
-        viewHolder.getTextView().setText(mDataSet[position]);
-    }
-
-    // Return the size of your dataset (invoked by the layout manager)
-    @Override
-    public int getItemCount() {
-        return mDataSet.length;
+            // Define click listener for the MenuViewHolder's View.
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
+                }
+            });
+        }
     }
 }

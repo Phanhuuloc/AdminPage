@@ -22,7 +22,15 @@ import io.realm.annotations.Ignore;
         analyze = {Bill.class})
 public class Bill extends RealmObject implements ODObject {
     private String uuid;
-    RealmList<Menu> items;
+    private String code;
+    private RealmList<Menu> items;
+
+    public Bill() {
+    }
+
+    public Bill(String code) {
+        this.code = code;
+    }
 
     public String getUuid() {
         return uuid;
@@ -30,6 +38,14 @@ public class Bill extends RealmObject implements ODObject {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public RealmList<Menu> getItems() {
