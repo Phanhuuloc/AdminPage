@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 
 import com.example.oa.adminpage.R;
+import com.example.oa.adminpage.presenter.fragment.BaseFragment;
+import com.example.oa.adminpage.presenter.fragment.MainManagerFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +28,18 @@ public class CustomPagerAdapter extends FragmentStatePagerAdapter {
         this.context = context;
     }
 
+    public CustomPagerAdapter(BaseFragment fragment, FragmentManager fm) {
+        super(fm);
+        this.context = fragment.getContext();
+    }
+
     public void addFragment(Fragment f) {
         fragments.add(f);
     }
 
     public void setFragments(List<Fragment> fragments) {
         this.fragments = fragments;
+        notifyDataSetChanged();
     }
 
     public void setTitles(List<String> titles) {

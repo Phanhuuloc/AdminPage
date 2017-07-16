@@ -9,16 +9,12 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.example.oa.adminpage.R;
-import com.example.oa.adminpage.presenter.fragment.ListBillFragment;
+import com.example.oa.adminpage.presenter.fragment.ListItemFragment;
 import com.example.oa.adminpage.presenter.fragment.ListCategoryFragment;
 import com.example.oa.adminpage.presenter.fragment.RecyclerViewBaseFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.example.oa.adminpage.presenter.fragment.RecyclerViewBaseFragment.KEY_LAYOUT_MANAGER;
-import static com.example.oa.adminpage.presenter.fragment.RecyclerViewBaseFragment.TYPE_HORIZONTAL_LIST;
-import static com.example.oa.adminpage.presenter.fragment.RecyclerViewBaseFragment.TYPE_VERTICAL_LIST;
 
 public class DetailActivity extends BaseActivity {
 
@@ -47,7 +43,7 @@ public class DetailActivity extends BaseActivity {
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-            RecyclerViewBaseFragment fragment1 = new ListBillFragment();
+            RecyclerViewBaseFragment fragment1 = new ListItemFragment();
             transaction.replace(R.id.sample_content_fragment, fragment1);
 
             RecyclerViewBaseFragment fragment2 = new ListCategoryFragment();

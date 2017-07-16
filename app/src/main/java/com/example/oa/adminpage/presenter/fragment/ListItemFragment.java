@@ -9,8 +9,8 @@ import java.util.ArrayList;
  * Created by Phoenix on 7/11/17.
  */
 
-public class ListBillFragment extends RecyclerViewBaseFragment<Bill> {
-    public ListBillFragment() {
+public class ListItemFragment extends RecyclerViewBaseFragment<Bill> {
+    public ListItemFragment() {
         mCurrentLayoutManagerType = TYPE_VERTICAL_LIST;
     }
 
