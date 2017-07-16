@@ -7,6 +7,17 @@
     <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
     <!--<item name="colorAccent">@color/colorAccent</item>-->
     <!--</style>-->
+    <style name="MyTheme" parent="Base.MyTheme"></style>
+
+    <style name="Base.MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/orangeRed</item>
+        <item name="colorPrimaryDark">@color/orangeRed</item>
+        <item name="colorAccent">@color/blueviolet</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/bg_light</item>
+    </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -33,4 +44,6 @@
         <item name="colorButtonNormal">@color/blue_grey_500</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <color name="bg_light">#FAFAFA</color>
 </resources>

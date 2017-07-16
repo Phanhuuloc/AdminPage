@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -28,7 +29,7 @@ public class MainManagerActivity extends BaseActivity implements NavigationView.
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.toolbar_layout)
+    @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout toolbarLayout;
     @BindView(R.id.content_main_frame)
     FrameLayout contentMainFrame;
@@ -38,6 +39,8 @@ public class MainManagerActivity extends BaseActivity implements NavigationView.
     NavigationView navView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+    @BindView(R.id.app_bar)
+    AppBarLayout appBar;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, MainManagerActivity.class);
@@ -67,6 +70,8 @@ public class MainManagerActivity extends BaseActivity implements NavigationView.
 
     private void initToolBar() {
         setSupportActionBar(toolbar);
+        toolbarLayout.setTitleEnabled(false);
+        this.setTitle("Title");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
