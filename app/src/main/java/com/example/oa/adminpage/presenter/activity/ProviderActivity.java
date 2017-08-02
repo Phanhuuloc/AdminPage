@@ -25,6 +25,7 @@ import io.realm.RealmList;
 
 public class ProviderActivity extends BaseActivity implements ListProviderView {
 
+    public static final String ID = "id";
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.viewPager)

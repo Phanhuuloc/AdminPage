@@ -20,12 +20,15 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.example.oa.adminpage.R;
+import com.example.oa.adminpage.presenter.di.HasComponent;
+import com.example.oa.adminpage.presenter.di.components.UserComponent;
 import com.example.oa.adminpage.presenter.fragment.MainManagerFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainManagerActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainManagerActivity extends BaseActivity implements HasComponent<UserComponent>,
+        NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -121,5 +124,10 @@ public class MainManagerActivity extends BaseActivity implements NavigationView.
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public UserComponent getComponent() {
+        return component;
     }
 }

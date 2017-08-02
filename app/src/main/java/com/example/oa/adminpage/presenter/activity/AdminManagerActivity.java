@@ -15,7 +15,7 @@ import android.view.MenuItem;
 
 import com.example.oa.adminpage.R;
 
-public class AdminManagerActivity extends AppCompatActivity
+public class AdminManagerActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override

@@ -30,6 +30,7 @@ import butterknife.OnClick;
 public class SignInActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
+    public static final String PREF_USER_FIRST_TIME = "PREF_USER_FIRST_TIME";
     @BindView(R.id.google_icon)
     ImageView googleIcon;
     @BindView(R.id.title_text)

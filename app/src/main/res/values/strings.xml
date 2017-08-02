@@ -37,6 +37,8 @@
     <string name="title_activity_oder">OderActivity</string>
     <string name="title_activity_login">Sign in</string>
 
+
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -65,4 +67,13 @@
     <string name="tools">Tools</string>
     <string name="setting">Setting</string>
     <string name="admin_page">Admin Page</string>
+    <string name="section_format">Page %1$d</string>
+
+    <string name="add_item_title">Mô tả sản phẩm</string>
+    <string name="title_category">Category</string>
+    <string name="title_name">Name</string>
+    <string name="title_price">Price</string>
+    <string name="title_desc">Description</string>
+    <string name="title_open_hour">Open hour</string>
+
 </resources>

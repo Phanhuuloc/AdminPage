@@ -29,6 +29,7 @@ import android.widget.TextView;
 import com.example.oa.adminpage.R;
 import com.example.oa.adminpage.data.local.Bill;
 import com.example.oa.adminpage.data.local.Category;
+import com.example.oa.adminpage.data.local.Menu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,9 +82,9 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
 
         if (holder instanceof MenuViewHolder) {
             MenuViewHolder viewHolder = (MenuViewHolder) holder;
-            Bill data = (Bill) items.get(position);
-            viewHolder.itemName.setText(data.getCode());
-            viewHolder.itemPrice.setText(data.getCode());
+            Menu data = (Menu) items.get(position);
+            viewHolder.itemName.setText(data.getName());
+            viewHolder.itemPrice.setText(""+data.getPrice());
         } else if (TYPE_LIST_CATEGORY == type) {
             CategoryViewHolder viewHolder = (CategoryViewHolder) holder;
             Category data = (Category) items.get(position);

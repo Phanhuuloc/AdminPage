@@ -1,7 +1,7 @@
 package com.example.oa.adminpage.domain.interactor;
 
 
-import com.example.oa.adminpage.data.cache.ListMenuCache;
+import com.example.oa.adminpage.data.cache.ListCategoryCache;
 import com.example.oa.adminpage.data.remote.RestApi;
 import com.example.oa.adminpage.domain.executor.PostExecutionThread;
 import com.example.oa.adminpage.domain.executor.ThreadExecutor;
@@ -12,29 +12,30 @@ import dagger.internal.Preconditions;
 import io.reactivex.Observable;
 
 /**
- * Created by Phoenix on 6/28/17.
+ * Created by Phoenix on 7/10/17.
  */
 
-public class GetMenuListUC extends UseCase<ListMenuCache, GetMenuListUC.Param> {
-    private final RestApi restApi;
+public class GetListCategoryUC extends UseCase<ListCategoryCache, GetListCategoryUC.Param> {
+    private  final RestApi restApi;
 
     @Inject
-    GetMenuListUC(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, RestApi restApi) {
+    GetListCategoryUC(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, RestApi restApi) {
         super(threadExecutor, postExecutionThread);
         this.restApi = restApi;
     }
 
     @Override
-    Observable<ListMenuCache> buildUseCaseObservable(Param param) {
+    Observable<ListCategoryCache> buildUseCaseObservable(Param param) {
         Preconditions.checkNotNull(param);
-        return restApi.getListMenu(param.name);
+        return restApi.getListCategory(param.uid);
+
     }
 
     public static class Param {
-        public final String name;
+        private final String uid;
 
-        public Param(String name) {
-            this.name = name;
+        public Param(String uid) {
+            this.uid = uid;
         }
     }
 }

@@ -79,7 +79,7 @@ public abstract class RecyclerViewBaseFragment<T extends RealmObject> extends Ba
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
 
         mAdapter = new CustomAdapter<T>();
-        initData();
+
 
         if (savedInstanceState != null) {
             // Restore saved layout manager type.
@@ -90,6 +90,9 @@ public abstract class RecyclerViewBaseFragment<T extends RealmObject> extends Ba
 
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
+
+
+        initData();
 
         return rootView;
     }

@@ -1,8 +1,11 @@
 package com.example.oa.adminpage.data.remote;
 
 
+import com.example.oa.adminpage.data.cache.ListCategoryCache;
 import com.example.oa.adminpage.data.cache.ListMenuCache;
 import com.example.oa.adminpage.data.cache.ListProviderCache;
+import com.example.oa.adminpage.data.local.Provider;
+import com.example.oa.adminpage.data.local.Result;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -33,5 +36,20 @@ public class RestApiImpl implements RestApi {
     @Override
     public Observable<ListMenuCache> getListMenu(String name) {
         return this.r.getListMenu(name);
+    }
+
+    @Override
+    public Observable<Provider> getProvider(String uid) {
+        return this.r.getProvider(uid);
+    }
+
+    @Override
+    public Observable<ListCategoryCache> getListCategory(String uid) {
+        return this.r.getListCategory(uid);
+    }
+
+    @Override
+    public Observable<Result> createProvider(Provider provider) {
+        return this.r.createProvider(provider);
     }
 }

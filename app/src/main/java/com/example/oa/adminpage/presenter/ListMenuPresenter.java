@@ -43,7 +43,7 @@ public class ListMenuPresenter implements Presenter {
 
     }
 
-    public void getListProvider(String name) {
+    public void getListMenu(String name) {
         getMenuListUC.execute(new ListMenuObserver(),new GetMenuListUC.Param(name));
     }
 
