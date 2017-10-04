@@ -3,6 +3,7 @@ package com.example.oa.adminpage.data.local;
 
 
 import com.example.oa.adminpage.data.ODObject;
+import com.google.gson.annotations.SerializedName;
 
 import org.parceler.Parcel;
 
@@ -16,8 +17,9 @@ import io.realm.RealmObject;
         value = Parcel.Serialization.BEAN,
         analyze = {Provider.class})
 public class Provider extends RealmObject implements ODObject {
-//    @Ignore
+
     private String uuid;
+    @SerializedName("name")
     private String name;
     private String image;
     private String description;

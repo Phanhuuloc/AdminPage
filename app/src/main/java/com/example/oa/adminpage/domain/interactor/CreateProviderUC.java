@@ -30,14 +30,26 @@ public class CreateProviderUC extends UseCase<Result, CreateProviderUC.Param>{
 
     @Override
     Observable<Result> buildUseCaseObservable(Param param) {
-        return restApi.createProvider(param.provider);
+        return restApi.createProvider(param.name,param.address,param.image,param.des,param.url,param.openHour, param.start);
     }
 
     public static class Param {
-        private final Provider provider;
+       private final String name;
+        private final String address;
+        private final String image;
+        private  final String des;
+        private final String url;
+        private final String openHour;
+        private final String start;
 
-        public Param(Provider provider) {
-            this.provider = provider;
+        public Param(String name, String address, String image, String des, String url, String openHour, String start) {
+            this.name = name;
+            this.address = address;
+            this.image = image;
+            this.des = des;
+            this.url = url;
+            this.openHour = openHour;
+            this.start = start;
         }
     }
 }

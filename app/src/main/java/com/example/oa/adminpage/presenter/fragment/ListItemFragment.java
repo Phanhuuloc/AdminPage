@@ -2,6 +2,7 @@ package com.example.oa.adminpage.presenter.fragment;
 
 import android.os.Bundle;
 
+import com.example.oa.adminpage.OAApplication;
 import com.example.oa.adminpage.data.local.Bill;
 import com.example.oa.adminpage.data.local.Menu;
 import com.example.oa.adminpage.presenter.ListMenuPresenter;
@@ -33,7 +34,7 @@ public class ListItemFragment extends RecyclerViewBaseFragment<Bill> implements 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         providerId = getArguments().getString(ProviderActivity.ID);
-        this.getComponent(UserComponent.class).inject(this);
+        OAApplication.component.inject(this);
         presenter.setView(this);
     }
 

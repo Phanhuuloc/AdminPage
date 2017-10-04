@@ -9,16 +9,15 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.example.oa.adminpage.R;
-import com.example.oa.adminpage.presenter.di.HasComponent;
 import com.example.oa.adminpage.presenter.di.components.UserComponent;
-import com.example.oa.adminpage.presenter.fragment.ListItemFragment;
 import com.example.oa.adminpage.presenter.fragment.ListCategoryFragment;
+import com.example.oa.adminpage.presenter.fragment.ListItemFragment;
 import com.example.oa.adminpage.presenter.fragment.RecyclerViewBaseFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DetailActivity extends BaseActivity implements HasComponent<UserComponent>{
+public class DetailActivity extends BaseActivity {
 
 
     @BindView(R.id.sample_content_fragment)
@@ -66,10 +65,5 @@ public class DetailActivity extends BaseActivity implements HasComponent<UserCom
 
     private void initialize() {
 
-    }
-
-    @Override
-    public UserComponent getComponent() {
-        return component;
     }
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.oa.adminpage.OAApplication;
 import com.example.oa.adminpage.data.local.Bill;
 import com.example.oa.adminpage.data.local.Category;
 import com.example.oa.adminpage.presenter.ListCategoryPresenter;
@@ -36,7 +37,7 @@ public class ListCategoryFragment extends RecyclerViewBaseFragment<Category> imp
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         providerId = getArguments().getString(ProviderActivity.ID);
-        this.getComponent(UserComponent.class).inject(this);
+        OAApplication.component.inject(this);
         presenter.setView(this);
     }
 

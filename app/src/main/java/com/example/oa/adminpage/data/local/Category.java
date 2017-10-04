@@ -17,9 +17,7 @@ import io.realm.RealmObject;
 public class Category extends RealmObject implements ODObject {
     private String uuid;
     private String name;
-    private int price;
-    private String description;
-    private String note;
+    private String defaultImage;
 
     public Category() {
     }
@@ -44,27 +42,11 @@ public class Category extends RealmObject implements ODObject {
         this.name = name;
     }
 
-    public int getPrice() {
-        return price;
+    public String getDefaultImage() {
+        return defaultImage;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
+    public void setDefaultImage(String defaultImage) {
+        this.defaultImage = defaultImage;
     }
 }

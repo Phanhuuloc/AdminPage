@@ -4,9 +4,10 @@ import android.app.Application;
 
 import com.example.oa.adminpage.common.AppConstants;
 import com.example.oa.adminpage.data.RealmSharedModule;
-import com.example.oa.adminpage.presenter.di.components.ApplicationComponent;
-import com.example.oa.adminpage.presenter.di.components.DaggerApplicationComponent;
-import com.example.oa.adminpage.presenter.di.modules.ApplicationModule;
+import com.example.oa.adminpage.presenter.di.components.DaggerUserComponent;
+import com.example.oa.adminpage.presenter.di.components.UserComponent;
+import com.example.oa.adminpage.presenter.di.modules.AppModule;
+import com.example.oa.adminpage.presenter.di.modules.DataModule;
 import com.example.oa.adminpage.presenter.di.modules.NetModule;
 import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
@@ -25,7 +26,7 @@ public class OAApplication extends Application implements AppConstants {
 
     public static OAApplication instance = null;
     public static String LANGUAGE_DEVICE = "";
-    private ApplicationComponent applicationComponent;
+    public static UserComponent component;
 
     @Override
     public void onCreate() {
@@ -70,14 +71,12 @@ public class OAApplication extends Application implements AppConstants {
 
 
     private void initializeInjector() {
-        this.applicationComponent = DaggerApplicationComponent.builder()
-                .applicationModule(new ApplicationModule(this))
-                .netModule(new NetModule("http://192.168.1.10:8040/"))
+        this.component = DaggerUserComponent.builder()
+                .appModule(new AppModule(this))
+                .netModule(new NetModule("http://192.168.1.12:8800/"))
+                .dataModule(new DataModule())
                 .build();
-    }
 
-    public ApplicationComponent getApplicationComponent() {
-        return this.applicationComponent;
     }
 
     private void initializeLeakDetection() {

@@ -3,8 +3,6 @@ package com.example.oa.adminpage.presenter.di.modules;
 import com.example.oa.adminpage.OAApplication;
 import com.example.oa.adminpage.common.Debug;
 import com.example.oa.adminpage.data.remote.RestApi;
-import com.example.oa.adminpage.data.remote.RestApiImpl;
-import com.example.oa.adminpage.data.remote.RetrofitServices;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -103,14 +101,8 @@ public class NetModule {
 
   @Provides
   @Singleton
-  RestApi provideRestApi(RestApiImpl restApi) {
-    return restApi;
-  }
-
-  @Provides
-  @Singleton
-  RetrofitServices provideRetrofitServices(Retrofit retrofit) {
-    return retrofit.create(RetrofitServices.class);
+  RestApi provideRestApi(Retrofit retrofit) {
+    return retrofit.create(RestApi.class);
   }
 
 }

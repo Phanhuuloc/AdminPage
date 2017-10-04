@@ -14,22 +14,23 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
 import com.example.oa.adminpage.R;
-import com.example.oa.adminpage.presenter.di.HasComponent;
 import com.example.oa.adminpage.presenter.di.components.UserComponent;
 import com.example.oa.adminpage.presenter.fragment.MainManagerFragment;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainManagerActivity extends BaseActivity implements HasComponent<UserComponent>,
-        NavigationView.OnNavigationItemSelectedListener {
+public class MainManagerActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String TAG = "MainManagerActivity";
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.collapsing_toolbar)
@@ -64,6 +65,8 @@ public class MainManagerActivity extends BaseActivity implements HasComponent<Us
         setContentView(R.layout.activity_main_manager);
         ButterKnife.bind(this);
         initialize();
+        String token = FirebaseInstanceId.getInstance().getToken();
+        Log.i(TAG, "token:"+ token);
     }
 
     private void initialize() {
@@ -124,10 +127,5 @@ public class MainManagerActivity extends BaseActivity implements HasComponent<Us
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    @Override
-    public UserComponent getComponent() {
-        return component;
     }
 }

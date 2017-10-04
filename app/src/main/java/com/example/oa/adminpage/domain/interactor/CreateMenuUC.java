@@ -1,7 +1,6 @@
 package com.example.oa.adminpage.domain.interactor;
 
 
-import com.example.oa.adminpage.data.local.Provider;
 import com.example.oa.adminpage.data.local.Result;
 import com.example.oa.adminpage.data.remote.RestApi;
 import com.example.oa.adminpage.domain.executor.PostExecutionThread;
@@ -15,7 +14,7 @@ import io.reactivex.Observable;
  * Created by Phoenix on 6/28/17.
  */
 
-public class CreateMenuUC extends UseCase<Result, CreateMenuUC.Param>{
+public class CreateMenuUC extends UseCase<Result, CreateMenuUC.Param> {
 
     private final RestApi restApi;
 
@@ -29,14 +28,24 @@ public class CreateMenuUC extends UseCase<Result, CreateMenuUC.Param>{
 
     @Override
     Observable<Result> buildUseCaseObservable(Param param) {
-        return restApi.createProvider(param.provider);
+        return restApi.createMenu(param.providerUid, param.category, param.name, param.price, param.des, param.note);
     }
 
     public static class Param {
-        private final Provider provider;
+        private final String providerUid;
+        private final String category;
+        private final String name;
+        private final String price;
+        private final String des;
+        private final String note;
 
-        public Param(Provider provider) {
-            this.provider = provider;
+        public Param(String providerUid, String category, String name, String price, String des, String note) {
+            this.providerUid = providerUid;
+            this.category = category;
+            this.name = name;
+            this.price = price;
+            this.des = des;
+            this.note = note;
         }
     }
 }
