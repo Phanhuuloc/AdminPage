@@ -1,8 +1,8 @@
 package com.example.oa.adminpage.data.remote;
 
 
+import com.example.oa.adminpage.data.cache.ListBillCache;
 import com.example.oa.adminpage.data.cache.ListCategoryCache;
-import com.example.oa.adminpage.data.cache.ListMenuCache;
 import com.example.oa.adminpage.data.cache.ListProviderCache;
 import com.example.oa.adminpage.data.local.Category;
 import com.example.oa.adminpage.data.local.Provider;
@@ -23,8 +23,8 @@ public interface RestApi {
     @GET("provider/list")
     Observable<ListProviderCache> getListProvider();
 
-    @GET("provider/{id}/menu")
-    Observable<ListMenuCache> getListMenu(@Path("id") String name);
+    @GET("bill/list")
+    Observable<ListBillCache> getListBill();
 
     @GET("provider/{name}")
     Observable<Provider> getProvider(@Path("name") String uid);

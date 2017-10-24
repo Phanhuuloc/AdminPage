@@ -3,6 +3,7 @@ package com.example.oa.adminpage.data.cache;
 
 
 
+import com.example.oa.adminpage.data.local.Bill;
 import com.example.oa.adminpage.data.local.Menu;
 import com.example.oa.adminpage.data.local.RealmListParcelConverter;
 
@@ -10,7 +11,8 @@ import org.parceler.Parcel;
 import org.parceler.ParcelPropertyConverter;
 
 
-import io.realm.ListMenuCacheRealmProxy;
+import butterknife.BindView;
+import io.realm.ListBillCacheRealmProxy;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 
@@ -18,19 +20,19 @@ import io.realm.RealmObject;
  * Created by Phoenix on 6/14/17.
  */
 
-@Parcel(implementations = {ListMenuCacheRealmProxy.class},
+@Parcel(implementations = {ListBillCacheRealmProxy.class},
         value = Parcel.Serialization.BEAN,
-        analyze = {ListMenuCache.class})
-public class ListMenuCache extends RealmObject{
-    private RealmList<Menu> items;
+        analyze = {ListBillCache.class})
+public class ListBillCache extends RealmObject{
+    private RealmList<Bill> items;
     private int count;
 
     @ParcelPropertyConverter(RealmListParcelConverter.class)
-    public RealmList<Menu> getItems() {
+    public RealmList<Bill> getItems() {
         return items;
     }
 
-    public void setItems(RealmList<Menu> items) {
+    public void setItems(RealmList<Bill> items) {
         this.items = items;
     }
 

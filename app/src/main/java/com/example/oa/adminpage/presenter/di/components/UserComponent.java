@@ -8,6 +8,7 @@ import com.example.oa.adminpage.presenter.activity.ProviderActivity;
 import com.example.oa.adminpage.presenter.di.modules.AppModule;
 import com.example.oa.adminpage.presenter.di.modules.DataModule;
 import com.example.oa.adminpage.presenter.di.modules.NetModule;
+import com.example.oa.adminpage.presenter.fragment.CheckListFragment;
 import com.example.oa.adminpage.presenter.fragment.ListCategoryFragment;
 import com.example.oa.adminpage.presenter.fragment.ListItemFragment;
 
@@ -30,4 +31,5 @@ public interface UserComponent {
 
     void inject(AddNewProductActivity addNewProductActivity);
 
+    void inject(CheckListFragment checkListFragment);
 }

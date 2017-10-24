@@ -18,6 +18,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.RealmList;
 
 /**
  * Created by Phoenix on 7/5/17.
@@ -32,14 +33,19 @@ public class CustomListAdapter extends RecyclerView.Adapter {
     private static final String TAG = "CustomListAdapter";
     private final int type;
 
-    private List<ODObject> items = new ArrayList<>();
+    private RealmList<Bill> items = new RealmList<>();
     private Context mActivity;
+
+    public void setItems(RealmList<Bill> items) {
+        this.items = items;
+        notifyDataSetChanged();
+    }
 
     public CustomListAdapter(Context mActivity, int type) {
         this.mActivity = mActivity;
         this.type = type;
 
-        initDummyData();
+//        initDummyData();
     }
 
     private void initDummyData() {
@@ -75,8 +81,8 @@ public class CustomListAdapter extends RecyclerView.Adapter {
         Bill data = (Bill) items.get(position);
         if (holder instanceof ListViewHolder) {
             ListViewHolder hd = (ListViewHolder) holder;
-            hd.itemTitle.setText(data.getCode());
-            Log.d(TAG,data.getCode());
+            hd.itemTitle.setText(data.getUuid());
+//            Log.d(TAG,data.getCode());
         } else if (holder instanceof GridViewHolder) {
             GridViewHolder hd = (GridViewHolder) holder;
         }

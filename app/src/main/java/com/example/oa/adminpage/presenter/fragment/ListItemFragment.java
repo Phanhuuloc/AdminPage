@@ -4,14 +4,10 @@ import android.os.Bundle;
 
 import com.example.oa.adminpage.OAApplication;
 import com.example.oa.adminpage.data.local.Bill;
-import com.example.oa.adminpage.data.local.Menu;
-import com.example.oa.adminpage.presenter.ListMenuPresenter;
+import com.example.oa.adminpage.presenter.ListBillPresenter;
 import com.example.oa.adminpage.presenter.activity.ProviderActivity;
 import com.example.oa.adminpage.presenter.adapter.CustomAdapter;
-import com.example.oa.adminpage.presenter.di.components.UserComponent;
-import com.example.oa.adminpage.presenter.view.ListMenuView;
-
-import java.util.ArrayList;
+import com.example.oa.adminpage.presenter.view.ListBillView;
 
 import javax.inject.Inject;
 
@@ -21,9 +17,9 @@ import io.realm.RealmList;
  * Created by Phoenix on 7/11/17.
  */
 
-public class ListItemFragment extends RecyclerViewBaseFragment<Bill> implements ListMenuView{
+public class ListItemFragment extends RecyclerViewBaseFragment<Bill> implements ListBillView {
     @Inject
-    ListMenuPresenter presenter;
+    ListBillPresenter presenter;
     private String providerId;
 
     public ListItemFragment() {
@@ -41,11 +37,11 @@ public class ListItemFragment extends RecyclerViewBaseFragment<Bill> implements 
     @Override
     protected void initData() {
         mAdapter.setType(CustomAdapter.TYPE_LIST_BILL);
-        presenter.getListMenu(providerId);
+        presenter.getListBill();
     }
 
     @Override
-    public void renderNetData(RealmList<Menu> items) {
+    public void renderNetData(RealmList<Bill> items) {
         mAdapter.setItems(items);
     }
 }

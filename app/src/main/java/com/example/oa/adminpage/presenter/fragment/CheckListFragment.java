@@ -9,28 +9,44 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.oa.adminpage.OAApplication;
 import com.example.oa.adminpage.R;
+import com.example.oa.adminpage.data.local.Bill;
+import com.example.oa.adminpage.presenter.ListBillPresenter;
 import com.example.oa.adminpage.presenter.adapter.CustomListAdapter;
+import com.example.oa.adminpage.presenter.view.ListBillView;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.realm.RealmList;
 
 /**
  * Created by Phoenix on 7/5/17.
  */
 
-public class CheckListFragment extends BaseFragment {
+public class CheckListFragment extends BaseFragment implements ListBillView {
 
     public static final int TYPE_LIST_INVOICE = 0;
     public static final int TYPE_GRID_INVOICE = 1;
     public static final int TYPE_LIST_FOOD = 3;
-
+    @Inject
+    ListBillPresenter presenter;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     Unbinder unbinder;
     private int type = TYPE_LIST_INVOICE;
     CustomListAdapter adapter;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        OAApplication.component.inject(this);
+        presenter.setView(this);
+
+    }
 
     @Nullable
     @Override
@@ -44,6 +60,7 @@ public class CheckListFragment extends BaseFragment {
     private void initialize() {
         initData();
         initRecyclerView();
+        presenter.getListBill();
     }
 
     private void initRecyclerView() {
@@ -65,11 +82,6 @@ public class CheckListFragment extends BaseFragment {
         adapter = new CustomListAdapter(getActivity(), type);
         recyclerView.setAdapter(adapter);
 
-        initFakeData();
-    }
-
-    private void initFakeData() {
-
     }
 
     private void initData() {
@@ -84,5 +96,10 @@ public class CheckListFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void renderNetData(RealmList<Bill> items) {
+        adapter.setItems(items);
     }
 }
