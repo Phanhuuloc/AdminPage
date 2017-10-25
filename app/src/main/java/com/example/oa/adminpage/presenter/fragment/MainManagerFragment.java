@@ -70,8 +70,8 @@ public class MainManagerFragment extends BaseFragment {
         b2.putInt(CheckListFragment.TYPE, 1);
         Fragment f2 = Fragment.instantiate(getContext(), CheckListFragment.class.getName(), b2);
 
-        List<Fragment> fragments = new ArrayList(Arrays.asList(f1, f2));
-        List<String> titles = new ArrayList(Arrays.asList("Xem theo ban", " Xem theo don hang"));
+        List<Fragment> fragments = new ArrayList<>(Arrays.asList(f1, f2));
+        List<String> titles = new ArrayList<>(Arrays.asList("Xem theo ban", " Xem theo don hang"));
         pagerAdapter.setFragments(fragments);
         pagerAdapter.setTitles(titles);
 

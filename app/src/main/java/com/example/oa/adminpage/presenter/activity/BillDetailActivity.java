@@ -1,5 +1,7 @@
 package com.example.oa.adminpage.presenter.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,9 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.oa.adminpage.R;
+import com.example.oa.adminpage.data.local.Bill;
+import com.example.oa.adminpage.data.local.Menu;
+import com.example.oa.adminpage.presenter.BillDetailPresenter;
 import com.example.oa.adminpage.presenter.adapter.CustomListAdapter;
+import com.example.oa.adminpage.presenter.view.BillDetailView;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,8 +31,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by Phoenix on 7/6/17.
  */
 
-public class BillDetailActivity extends BaseActivity {
-
+public class BillDetailActivity extends BaseActivity implements BillDetailView {
+    public static final String BILL_ID = "BILL_ID";
+    @Inject
+    BillDetailPresenter presenter;
 
     @BindView(R.id.text)
     TextView text;
@@ -36,7 +46,7 @@ public class BillDetailActivity extends BaseActivity {
     Button finish;
     @BindView(R.id.img_success)
     CircleImageView imgSuccess;
-    private CustomListAdapter adapter;
+    private CustomListAdapter<Menu> adapter;
     private IconicsDrawable ic;
 
     @Override
@@ -45,6 +55,15 @@ public class BillDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_bill_detail);
         ButterKnife.bind(this);
         initialize();
+        component.inject(this);
+        presenter.setView(this);
+        presenter.getBillDetail(getIntent().getStringExtra(BILL_ID));
+    }
+
+    public static void start(Context context, String bid) {
+        Intent intent = new Intent(context, BillDetailActivity.class);
+        intent.putExtra(BILL_ID, bid);
+        context.startActivity(intent);
     }
 
     private void initialize() {
@@ -71,5 +90,10 @@ public class BillDetailActivity extends BaseActivity {
             case R.id.finish:
                 break;
         }
+    }
+
+    @Override
+    public void renderNetData(Bill bill) {
+        adapter.setItems(bill.getMons());
     }
 }

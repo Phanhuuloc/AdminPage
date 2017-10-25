@@ -21,12 +21,17 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.example.oa.adminpage.R;
+import com.example.oa.adminpage.data.remote.RestApi;
 import com.example.oa.adminpage.presenter.di.components.UserComponent;
 import com.example.oa.adminpage.presenter.fragment.MainManagerFragment;
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainManagerActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -45,6 +50,9 @@ public class MainManagerActivity extends BaseActivity implements NavigationView.
     DrawerLayout drawerLayout;
     @BindView(R.id.app_bar)
     AppBarLayout appBar;
+
+    @Inject
+    RestApi restApi;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, MainManagerActivity.class);
@@ -65,8 +73,15 @@ public class MainManagerActivity extends BaseActivity implements NavigationView.
         setContentView(R.layout.activity_main_manager);
         ButterKnife.bind(this);
         initialize();
+        component.inject(this);
         String token = FirebaseInstanceId.getInstance().getToken();
-        Log.i(TAG, "token:"+ token);
+        Log.i(TAG, "token:" + token);
+        restApi.setProviderToken("e030dc15-fa87-470e-9a45-75b5fa3c16c2", token)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(st->{
+                    System.out.println("success");
+                }, Throwable::getMessage);
     }
 
     private void initialize() {
@@ -80,13 +95,8 @@ public class MainManagerActivity extends BaseActivity implements NavigationView.
         this.setTitle("Title");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

@@ -38,7 +38,6 @@
     <string name="title_activity_login">Sign in</string>
 
 
-
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -75,5 +74,6 @@
     <string name="title_price">Price</string>
     <string name="title_desc">Description</string>
     <string name="title_open_hour">Open hour</string>
+    <string name="title_activity_bill">BillActivity</string>
 
 </resources>

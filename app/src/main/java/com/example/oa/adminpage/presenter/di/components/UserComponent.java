@@ -2,9 +2,12 @@ package com.example.oa.adminpage.presenter.di.components;
 
 
 import com.example.oa.adminpage.presenter.activity.AddNewProductActivity;
+import com.example.oa.adminpage.presenter.activity.BillDetailActivity;
 import com.example.oa.adminpage.presenter.activity.CreateCategoryActivity;
 import com.example.oa.adminpage.presenter.activity.CreateProviderActivity;
+import com.example.oa.adminpage.presenter.activity.MainManagerActivity;
 import com.example.oa.adminpage.presenter.activity.ProviderActivity;
+import com.example.oa.adminpage.presenter.activity.WelcomeActivity;
 import com.example.oa.adminpage.presenter.di.modules.AppModule;
 import com.example.oa.adminpage.presenter.di.modules.DataModule;
 import com.example.oa.adminpage.presenter.di.modules.NetModule;
@@ -32,4 +35,8 @@ public interface UserComponent {
     void inject(AddNewProductActivity addNewProductActivity);
 
     void inject(CheckListFragment checkListFragment);
+
+    void inject(MainManagerActivity mainManagerActivity);
+
+    void inject(BillDetailActivity billDetailActivity);
 }

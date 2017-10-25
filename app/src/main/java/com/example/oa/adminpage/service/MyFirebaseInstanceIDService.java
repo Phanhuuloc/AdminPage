@@ -7,8 +7,11 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.example.oa.adminpage.common.Config;
+import com.example.oa.adminpage.data.remote.RestApi;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
+
+import javax.inject.Inject;
 
 /**
  * Created by Phoenix on 10/4/17.

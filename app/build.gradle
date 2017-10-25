@@ -75,10 +75,11 @@ dependencies {
     compile 'com.layer-net:step-indicator:1.1.0'
     compile 'com.mikepenz:iconics-core:2.8.8@aar'
     compile 'com.mikepenz:google-material-typeface:3.0.1.1.original@aar'
+    compile 'com.google.firebase:firebase-messaging:11.0.4'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.7'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     annotationProcessor 'org.parceler:parceler:1.1.8'
-    compile 'com.google.firebase:firebase-messaging:11.0.4'
 }
 apply plugin: 'com.google.gms.google-services'

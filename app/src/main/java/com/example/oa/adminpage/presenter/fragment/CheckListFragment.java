@@ -26,7 +26,6 @@ import io.realm.RealmList;
 /**
  * Created by Phoenix on 7/5/17.
  */
-
 public class CheckListFragment extends BaseFragment implements ListBillView {
 
     public static final int TYPE_LIST_INVOICE = 0;
@@ -45,7 +44,6 @@ public class CheckListFragment extends BaseFragment implements ListBillView {
         super.onCreate(savedInstanceState);
         OAApplication.component.inject(this);
         presenter.setView(this);
-
     }
 
     @Nullable

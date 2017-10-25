@@ -23,7 +23,7 @@ import io.realm.annotations.Ignore;
 public class Bill extends RealmObject implements ODObject {
     private String uuid;
     private String code;
-    private RealmList<Menu> items;
+    private RealmList<Menu> mons;
 
     public Bill() {
     }
@@ -48,12 +48,12 @@ public class Bill extends RealmObject implements ODObject {
         this.code = code;
     }
 
-    public RealmList<Menu> getItems() {
-        return items;
+    public RealmList<Menu> getMons() {
+        return mons;
     }
 
     @ParcelPropertyConverter(RealmListParcelConverter.class)
-    public void setItems(RealmList<Menu> items) {
-        this.items = items;
+    public void setMons(RealmList<Menu> items) {
+        this.mons = items;
     }
 }

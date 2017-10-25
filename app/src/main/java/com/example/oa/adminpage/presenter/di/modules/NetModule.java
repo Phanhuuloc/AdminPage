@@ -19,6 +19,7 @@ import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.JavaNetCookieJar;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -64,6 +65,10 @@ public class NetModule {
   @Singleton
   OkHttpClient provideOkhttpClient(Cache cache) {
     OkHttpClient.Builder client = new OkHttpClient.Builder();
+    HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+// set your desired log level
+    logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+    client.addInterceptor(logging);  // <-- this is the important line!
     client.cache(cache);
     client.connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)

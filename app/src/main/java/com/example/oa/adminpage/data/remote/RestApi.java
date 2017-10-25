@@ -4,6 +4,7 @@ package com.example.oa.adminpage.data.remote;
 import com.example.oa.adminpage.data.cache.ListBillCache;
 import com.example.oa.adminpage.data.cache.ListCategoryCache;
 import com.example.oa.adminpage.data.cache.ListProviderCache;
+import com.example.oa.adminpage.data.local.Bill;
 import com.example.oa.adminpage.data.local.Category;
 import com.example.oa.adminpage.data.local.Provider;
 import com.example.oa.adminpage.data.local.Result;
@@ -45,4 +46,10 @@ public interface RestApi {
     Observable<Result> createMenu(@Query("pid") String providerUid, @Query("category") String categoryUid,
                                   @Query("name") String name, @Query("price") String price,
                                   @Query("des") String des, @Query("note") String note);
+
+    @POST("provider/{uuid}/token")
+    Observable<Result> setProviderToken(@Path("uuid") String uuid, @Query("token") String token);
+
+    @GET("bill/{uuid}")
+    Observable<Bill> getBillDetail(@Path("uuid") String bid);
 }
